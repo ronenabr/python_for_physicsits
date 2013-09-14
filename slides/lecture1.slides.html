@@ -9,6 +9,23 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
+<script type="text/javascript" src="bidiweb.js"> </script>
+        <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            bidiweb.process_css('.rendered_html *', {rtl: 'rtl', ltr: 'ltr'});
+        });
+        </script>
+<style type="text/css">
+        .ltr {
+            text-align: left;
+            direction: ltr;
+
+        }
+        .rtl {
+            text-align: right;
+            direction: rtl;
+        }
+</style>
 
 
 <!-- General and theme style sheets -->
@@ -1724,23 +1741,8 @@ div.output_prompt {
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
-  <script type="text/javascript" src="bidiweb.js"> </script>
-        <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function() {
-            bidiweb.process_css('.rendered_html *', {rtl: 'rtl', ltr: 'ltr'});
-        });
-        </script>
-<style type="text/css">
-        .ltr {
-            text-align: left;
-            direction: ltr;
 
-        }
-        .rtl {
-            text-align: right;
-            direction: rtl;
-        }
-</style>
+
 
 </head>
 
