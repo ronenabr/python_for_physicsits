@@ -32,7 +32,8 @@ div.output_area pre {
 font-size: 90%;
 }
 .rendered_html p {
-text-align: inherit;
+   /* removed to support bidiweb */
+  /*text-align: inherit;*/
 }
 div#notebook {
 overflow-x: hidden;
