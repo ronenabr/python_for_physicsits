@@ -1,8 +1,23 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>[]</title>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/reveal.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/theme/simple.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+</title>
   <script type="text/javascript" src="bidiweb.js"> </script>
         <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
@@ -20,6 +35,14 @@
             direction: rtl;
         }
 </style>
+<script>
+
+document.write( '<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<!--[if lt IE 9]>
+<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/html5shiv.js"></script>
+<![endif]-->
 
 <style type="text/css">
     .clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
@@ -1670,562 +1693,186 @@ h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anch
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-body {
-  overflow: visible;
-  padding: 8px;
+.reveal {
+font-size: 20px;
+overflow-y: auto;
+overflow-x: hidden;
 }
-.input_area {
-  padding: 0.2em;
+.reveal pre {
+width: 95%;
+padding: 0.4em;
+margin: 0px;
+font-family: monospace, sans-serif;
+font-size: 80%;
+box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
+.reveal section img {
+border: 0px solid black;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+.reveal .slides {
+text-align: left;
+}
+.reveal.fade {
+opacity: 1;
+}
+div.input_area {
+padding: 0.06em;
+}
+div.code_cell {
+background-color: transparent;
+}
+div.prompt {
+width: 11ex;
+padding: 0.4em;
+margin: 0px;
+font-family: monospace, sans-serif;
+font-size: 80%;
+text-align: right;
+}
+div.output_area pre {
+font-family: monospace, sans-serif;
+font-size: 80%;
+}
+div.output_prompt {
+    /* 5px right shift to account for margin in parent container */
+    margin: 5px 5px 0 0;
+}
+.rendered_html p {
 
-pre {
-    padding: 0.2em;
-    border: none;
-    margin: 0px;
-    font-size: 13px;
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-<script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-<script type="text/javascript">
-init_mathjax = function() {
-    if (window.MathJax) {
-        // MathJax loaded
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-            },
-            displayAlign: 'left', // Change this to 'center' to center equations.
-            "HTML-CSS": {
-                styles: {'.MathJax_Display': {"margin": 0}}
-            }
-        });
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    }
-}
-init_mathjax();
-</script>
 </head>
+
 <body>
+<div class="reveal">
+<div class="slides">
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>
-<center>
-סדנאת פייתון לפיזיקאים
-</center>
-</h1>
-
-<h2 id="פונקציות">פונקציות</h2>
+<h1 id="סדנאת-פייתון-לפיזיקאים">סדנאת פייתון לפיזיקאים</h1>
+<h2 id="דוגמה-פתרון-משוואת-שרדינגר">דוגמה: פתרון משוואת שרדינגר</h2>
 <p>הפקולטה לפיזיקה, הטכניון. חורף 2013</p>
 <p>מרצה: רונן אברבנאל</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>פונקציות</strong> הן קטעי קוד הנכתבים פעם אחת, ומבצעים סדרה של פעולות בכל פעם שהן נקראות. שימוש טוב בפונקציות מאפשר לכתוב קוד קריא יותר, ובקלות רבה יותר.</p>
-<p>פונקציות ב-C:</p>
-<pre><code>float location(int time, float x0, float v0, float a)
-{
-    return x0 + v0*t + a*a*t/2;
-}</code></pre>
-<p>בפייתון, כמו בפייתון, אין צורך להצהיר על טיפוסי פרמטרים ועל ערך החזרה.</p>
+<p>בחלק הזה של הסדנה נעקוב אחרי מקרה לדוגמה - פתרון משוואת שרדינגר התלויה בזמן עבור פוטנציאל שרירותי.</p>
+<p>הדוגמה מבוסת על פוסט בבלוג של <a href="http://jakevdp.github.io/blog/2012/09/05/quantum-python/">ג'ייק ואנדרפלס</a>.</p>
+<p>דרך הדוגמה נשחק עם קוד פייתון קצת ארוך יותר, ונשחק עם numpy, scipy.fftpack ו-matplotlib.</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="הגדרת-פונקציות">הגדרת פונקציות</h2>
+<p>משוואת שרדינגר החד ממדית התלויה בזמן,</p>
+<p>\[i=-+V\]</p>
+<p>כאשר <span class="math">\(V\)</span> היא פונקציה כלשהי של <span class="math">\(x\)</span> ו-<span class="math">\(\psi\)</span> היא פונקציית הגל, התלויה בזמן ובמקום..</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>כדי לפתור את המשוואה נשמש ב<strong>טרנספורם פורייה</strong> לפי ההגדרה הבאה:</p>
+<p>\[(k,t)=_{-}<sup>{}(x,t)e</sup>{-ikx}{}x\]</p>
+<p>וטרנספורם הפוך מוגדר על ידי: \[(x,t)=_{-}<sup>{}(k,t)e</sup>{ikx}{}k\]</p>
+<p>אם נציב את <span class="math">\(\tilde{\psi}\)</span> לתוך משוואת שרדינגר, נקבל את המשוואה, \[i=+\]</p>
+<p>עבור <span class="math">\(\tilde{\psi}\)</span>.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>המשוואה הזו עדיין לא ממש פתירה, היא מקלה עלינו להפריד למקרים שונים.</p>
+<p>ראשית, נפתור ישירות (פורמלית) את המשוואה \[i=V(x)\] ועבור מקטע זמן <span class="math">\(\Delta t\)</span> קטן, נקבל שהפתרון הוא, \[(x,t+t)=(x,t)e^{-iV(x)t/}\]</p>
+<p>שנית, נפתור ישירות במישור<br /><span class="math">\(k\)</span> את המשוואה, \[i=\] ונקבל פתרון מהצורה,</p>
+<p>\[(k,t+t)=(k,t)e<sup>{-ik</sup>{2}t/2m }\]</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[1]:
+In&nbsp;[]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s">&quot;in test function&quot;</span>
-
-<span class="n">test</span><span class="p">()</span>
+<div class="highlight"><pre>
 </pre></div>
 
 </div>
 </div>
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
-<pre>
-in test function
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>תוכן הפונקציה מוזח פנימה, לציין שמדובר ב<em>בלוק</em> חדש.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="החזרת-ערך">החזרת ערך</h2>
-<p>מתבצעת באמצעות <em>return</em>. אין צורך להצהיר על טיפוס הנתונים המוחזר.</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[2]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">disk_area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span>
-
-<span class="n">disk_area</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-7.0649999999999995
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>** הגדרת פונקציה מורכבת ממספר חלקים **</p>
-<ul>
-<li>המילה השמורה <em>def</em></li>
-<li>לאחריה, שם הפונקציה.</li>
-<li>לאחר מכן, הארגומנטים המועברים לפונקציה, מוקפים בסוגריים ומופרדים על ידי פסיק. לאחר הסוגריים, השורה מסתיימת בנקודתיים.</li>
-<li>גוף הפונקציה.</li>
-<li>החזרת ערך, <em>return</em></li>
-</ul>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="העברת-פרמטרים-לפונקציה">העברת פרמטרים לפונקציה</h2>
-<p>פרמטרים הכרחיים מועברים לפונקציה לפי הסדר</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[2]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">double_it</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
-<span class="n">double_it</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-6
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>אם מספר הפרמטרים המועברים לפונקציה שונה ממספר הפרמטרים ההכרחיים, תתרחש שגיאה,</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[3]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">double_it</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_pyerr">
-<pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-3-51cdedbb81b0&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span>double_it<span class="ansiyellow">(</span><span class="ansiyellow">)</span><span class="ansiyellow"></span>
-
-<span class="ansired">TypeError</span>: double_it() takes exactly 1 argument (0 given)</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>ניתן להגדיר פרמטרים אופציונאלים, ולהם ערך ברירת מחדל. פרמטרים כאלו לא חייבים להעביר לפונקציה.</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[5]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">double_it</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
-<span class="n">double_it</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[5]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-4
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[6]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">double_it</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[6]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-6
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>פרמטרים אופציונאליים חייבים לבוא אחרונים (אלא אם כן קוראים בשמם)</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[9]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">location</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">9.8</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[9]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-122.50000000000001
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[10]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[10]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-525
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>ניתן להעביר פרמטרים גם לפי שמם: הפרמטרים הראשונים חייבים לבוא לפי הסדר, ולאחר מכן, בכל סדר שהוא:</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[11]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[11]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-525
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[12]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">x0</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[12]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-524
-</pre>
-
 </div>
 </div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="משתנים-גלובאליים">משתנים גלובאליים</h2>
-<p>למשתנים המוגדרים מחוץ לפונקציה, ניתן להתייחס בתוך הפונקציה:</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[13]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="k">def</span> <span class="nf">addx</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
-<span class="n">addx</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[13]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-15
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>אבל משתנים כאלו, לא ניתן לשנות בתוך הפונקציה, אלא אם כן מחריזים עליהם כגלובלים.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>הדוגמה הבאה אינה עובדת:</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[16]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">x</span><span class="o">=</span><span class="mi">5</span>
-<span class="k">def</span> <span class="nf">setx</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
-    <span class="k">print</span> <span class="s">&quot;x is now </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">x</span>
-<span class="n">setx</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">x</span>
-</pre></div>
-
 </div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
-<pre>
-x is now 10
-5
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>אם נשתמש במילה השמורה <em>global</em>...</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[18]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">x</span><span class="o">=</span><span class="mi">5</span>
-<span class="k">def</span> <span class="nf">setx</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">x</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
-    <span class="k">print</span> <span class="s">&quot;x is now </span><span class="si">%d</span><span class="s">, for real&quot;</span> <span class="o">%</span> <span class="n">x</span>
 
-<span class="n">setx</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">x</span>
-</pre></div>
+<!--
+Uncomment the following block and the addthis_widget.js (see below inside dependencies)
+to get enable social buttons.
+-->
+
+<!--
+<div class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="left:20px;top:20px;">
+<a class="addthis_button_twitter"></a>
+<a class="addthis_button_google_plusone_share"></a>
+<a class="addthis_button_linkedin"></a>
+<a class="addthis_button_facebook"></a>
+<a class="addthis_button_more"></a>
+</div>
+-->
+
+<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/head.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/js/reveal.js"></script>
+
+<script>
+
+// Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls: true,
+progress: true,
+history: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/classList.js", condition: function() { return !document.body.classList; } },
+{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } }
+// { src: 'http://s7.addthis.com/js/300/addthis_widget.js', async: true},
+]
+});
+</script>
+
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script>
+<!-- End of mathjax configuration -->
+
+<script>
+//  We wait for the onload function to load MathJax after the page is completely loaded.
+//  MathJax is loaded 1 unit of time after the page is ready.
+//  This hack prevent problems when you load multiple js files (i.e. social button from addthis).
+//
+window.onload = function () {
+  setTimeout(function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  },1)
+}
+</script>
+
+<script>
+Reveal.addEventListener( 'slidechanged', function( event ) {
+MathJax.Hub.Rerender(event.currentSlide);
+});
+</script>
 
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
-<pre>
-x is now 10, for real
-10
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="על-מה-לא-דיברנו">על מה לא דיברנו?</h2>
-<p>קצרה היריעה לתאר את כל המאפיינים של פונקציות בפייתון. הנה כמה דברים שלא נדבר עליהם:</p>
-<ul>
-<li>כתיבת תיעוד בתוך קוד הפונקציה, <em>docstring</em></li>
-<li>שינוי ערכים של פרמטרים בתוך פונקציה</li>
-<li>העברת מספר לא ידוע של פרמטרים לפונקציה: *args, **kwargs</li>
-<li>שימוש בפונקציות בתור &quot;משתנה&quot;</li>
-</ul>
-</div>
 </body>
+
 </html>

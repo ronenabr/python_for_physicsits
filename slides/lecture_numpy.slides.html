@@ -1,8 +1,23 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>[]</title>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/reveal.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/theme/simple.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+</title>
   <script type="text/javascript" src="bidiweb.js"> </script>
         <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
@@ -20,6 +35,14 @@
             direction: rtl;
         }
 </style>
+<script>
+
+document.write( '<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<!--[if lt IE 9]>
+<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/html5shiv.js"></script>
+<![endif]-->
 
 <style type="text/css">
     .clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
@@ -1670,195 +1693,104 @@ h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anch
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-body {
-  overflow: visible;
-  padding: 8px;
+.reveal {
+font-size: 20px;
+overflow-y: auto;
+overflow-x: hidden;
 }
-.input_area {
-  padding: 0.2em;
+.reveal pre {
+width: 95%;
+padding: 0.4em;
+margin: 0px;
+font-family: monospace, sans-serif;
+font-size: 80%;
+box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
+.reveal section img {
+border: 0px solid black;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+.reveal .slides {
+text-align: left;
+}
+.reveal.fade {
+opacity: 1;
+}
+div.input_area {
+padding: 0.06em;
+}
+div.code_cell {
+background-color: transparent;
+}
+div.prompt {
+width: 11ex;
+padding: 0.4em;
+margin: 0px;
+font-family: monospace, sans-serif;
+font-size: 80%;
+text-align: right;
+}
+div.output_area pre {
+font-family: monospace, sans-serif;
+font-size: 80%;
+}
+div.output_prompt {
+    /* 5px right shift to account for margin in parent container */
+    margin: 5px 5px 0 0;
+}
+.rendered_html p {
 
-pre {
-    padding: 0.2em;
-    border: none;
-    margin: 0px;
-    font-size: 13px;
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-<script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-<script type="text/javascript">
-init_mathjax = function() {
-    if (window.MathJax) {
-        // MathJax loaded
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-            },
-            displayAlign: 'left', // Change this to 'center' to center equations.
-            "HTML-CSS": {
-                styles: {'.MathJax_Display': {"margin": 0}}
-            }
-        });
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    }
-}
-init_mathjax();
-</script>
 </head>
+
 <body>
-
+<div class="reveal">
+<div class="slides">
+<section>
+    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>
-<center>
-סדנאת פייתון לפיזיקאים
-</center>
-</h1>
-
-<h2 id="פונקציות">פונקציות</h2>
+<h1 id="סדנאת-פייתון-לפיזיקאים">סדנאת פייתון לפיזיקאים</h1>
+<h2 id="numpy-חבילת-היסוד-של-פייתון-לשימוש-מדעי">Numpy, חבילת היסוד של פייתון לשימוש מדעי</h2>
 <p>הפקולטה לפיזיקה, הטכניון. חורף 2013</p>
 <p>מרצה: רונן אברבנאל</p>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>כבר ראינו כמה פעולות פשוטות עם מערכים של numpy אבל בכל זאת, נרצה להדגיש את היתרונות שלהם על פני טיפוסי הנתונים הרגילים של פייתון:</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>פונקציות</strong> הן קטעי קוד הנכתבים פעם אחת, ומבצעים סדרה של פעולות בכל פעם שהן נקראות. שימוש טוב בפונקציות מאפשר לכתוב קוד קריא יותר, ובקלות רבה יותר.</p>
-<p>פונקציות ב-C:</p>
-<pre><code>float location(int time, float x0, float v0, float a)
-{
-    return x0 + v0*t + a*a*t/2;
-}</code></pre>
-<p>בפייתון, כמו בפייתון, אין צורך להצהיר על טיפוסי פרמטרים ועל ערך החזרה.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="הגדרת-פונקציות">הגדרת פונקציות</h2>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[1]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s">&quot;in test function&quot;</span>
-
-<span class="n">test</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
-<pre>
-in test function
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>תוכן הפונקציה מוזח פנימה, לציין שמדובר ב<em>בלוק</em> חדש.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="החזרת-ערך">החזרת ערך</h2>
-<p>מתבצעת באמצעות <em>return</em>. אין צורך להצהיר על טיפוס הנתונים המוחזר.</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[2]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">disk_area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span>
-
-<span class="n">disk_area</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-7.0649999999999995
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>** הגדרת פונקציה מורכבת ממספר חלקים **</p>
 <ul>
-<li>המילה השמורה <em>def</em></li>
-<li>לאחריה, שם הפונקציה.</li>
-<li>לאחר מכן, הארגומנטים המועברים לפונקציה, מוקפים בסוגריים ומופרדים על ידי פסיק. לאחר הסוגריים, השורה מסתיימת בנקודתיים.</li>
-<li>גוף הפונקציה.</li>
-<li>החזרת ערך, <em>return</em></li>
+<li>תמיכה נוחה יותר במערכים מרובי ממדים (לא רשימה של רשימות כי אם מערך n-ממדי אמיתי)</li>
+<li>מימוש יעיל יותר, הן של המערכים עצמן והן של פונקציות עזר.</li>
+<li>מיועד ל&quot;תכנות מוכוון מערכים&quot;</li>
 </ul>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="העברת-פרמטרים-לפונקציה">העברת פרמטרים לפונקציה</h2>
-<p>פרמטרים הכרחיים מועברים לפונקציה לפי הסדר</p>
-</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
 In&nbsp;[2]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">double_it</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
-<span class="n">double_it</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
 
 </div>
 </div>
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-6
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="יצירת-מערך-מרשימה">יצירת מערך מרשימה</h2>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>אם מספר הפרמטרים המועברים לפונקציה שונה ממספר הפרמטרים ההכרחיים, תתרחש שגיאה,</p>
+<p>חד ממדי:</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -1866,7 +1798,8 @@ In&nbsp;[2]:
 In&nbsp;[3]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">double_it</span><span class="p">()</span>
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">a</span>
 </pre></div>
 
 </div>
@@ -1876,24 +1809,21 @@ In&nbsp;[3]:
 <div class="output vbox">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_pyerr">
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[3]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
 <pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-3-51cdedbb81b0&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span>double_it<span class="ansiyellow">(</span><span class="ansiyellow">)</span><span class="ansiyellow"></span>
+array([0, 1, 2, 3])
+</pre>
 
-<span class="ansired">TypeError</span>: double_it() takes exactly 1 argument (0 given)</pre>
 </div>
 </div>
 
 </div>
 </div>
 
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>ניתן להגדיר פרמטרים אופציונאלים, ולהם ערך ברירת מחדל. פרמטרים כאלו לא חייבים להעביר לפונקציה.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -1901,9 +1831,7 @@ In&nbsp;[3]:
 In&nbsp;[5]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">double_it</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
-<span class="n">double_it</span><span class="p">()</span>
+<div class="highlight"><pre><span class="n">a</span><span class="o">.</span><span class="n">ndim</span>
 </pre></div>
 
 </div>
@@ -1919,7 +1847,7 @@ In&nbsp;[5]:
 
 
 <pre>
-4
+1
 </pre>
 
 </div>
@@ -1935,7 +1863,7 @@ In&nbsp;[5]:
 In&nbsp;[6]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">double_it</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">a</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -1951,7 +1879,7 @@ In&nbsp;[6]:
 
 
 <pre>
-6
+(4,)
 </pre>
 
 </div>
@@ -1961,8 +1889,75 @@ In&nbsp;[6]:
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[7]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[7]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+4
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>פרמטרים אופציונאליים חייבים לבוא אחרונים (אלא אם כן קוראים בשמם)</p>
+<p>ממד גבוהה יותר:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[8]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+<span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[8]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[0, 1, 2],
+       [3, 4, 5]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -1970,9 +1965,7 @@ In&nbsp;[6]:
 In&nbsp;[9]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">location</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">9.8</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">b</span><span class="o">.</span><span class="n">ndim</span>
 </pre></div>
 
 </div>
@@ -1988,7 +1981,7 @@ In&nbsp;[9]:
 
 
 <pre>
-122.50000000000001
+2
 </pre>
 
 </div>
@@ -2004,7 +1997,7 @@ In&nbsp;[9]:
 In&nbsp;[10]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">b</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -2020,7 +2013,7 @@ In&nbsp;[10]:
 
 
 <pre>
-525
+(2, 3)
 </pre>
 
 </div>
@@ -2030,16 +2023,13 @@ In&nbsp;[10]:
 </div>
 
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>ניתן להעביר פרמטרים גם לפי שמם: הפרמטרים הראשונים חייבים לבוא לפי הסדר, ולאחר מכן, בכל סדר שהוא:</p>
-</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
 In&nbsp;[11]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -2055,39 +2045,7 @@ In&nbsp;[11]:
 
 
 <pre>
-525
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[12]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">x0</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[12]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-524
+2
 </pre>
 
 </div>
@@ -2098,8 +2056,20 @@ In&nbsp;[12]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="משתנים-גלובאליים">משתנים גלובאליים</h2>
-<p>למשתנים המוגדרים מחוץ לפונקציה, ניתן להתייחס בתוך הפונקציה:</p>
+<p>מחזיר רק את הממד הראשון!</p>
+</div></section><section>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[12]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">]],[[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">]]])</span>
+</pre></div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -2107,10 +2077,7 @@ In&nbsp;[12]:
 In&nbsp;[13]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="k">def</span> <span class="nf">addx</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
-<span class="n">addx</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">c</span>
 </pre></div>
 
 </div>
@@ -2126,7 +2093,11 @@ In&nbsp;[13]:
 
 
 <pre>
-15
+array([[[1],
+        [2]],
+
+       [[3],
+        [4]]])
 </pre>
 
 </div>
@@ -2136,24 +2107,13 @@ In&nbsp;[13]:
 </div>
 
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>אבל משתנים כאלו, לא ניתן לשנות בתוך הפונקציה, אלא אם כן מחריזים עליהם כגלובלים.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>הדוגמה הבאה אינה עובדת:</p>
-</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[16]:
+In&nbsp;[14]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">x</span><span class="o">=</span><span class="mi">5</span>
-<span class="k">def</span> <span class="nf">setx</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
-    <span class="k">print</span> <span class="s">&quot;x is now </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">x</span>
-<span class="n">setx</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">x</span>
+<div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -2163,22 +2123,65 @@ In&nbsp;[16]:
 <div class="output vbox">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[14]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
 <pre>
-x is now 10
-5
-
+(2, 2, 1)
 </pre>
-</div>
-</div>
 
 </div>
 </div>
 
+</div>
+</div>
+
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="פונקציות-ליצירת-מערך">פונקציות ליצירת מערך</h2>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>אם נשתמש במילה השמורה <em>global</em>...</p>
+<p>בדרך כלל, זה לא כל כך כיף להכניס מידע למערכים בזה אחר זה. אז יש פנקציות שעושות את זה:</p>
+<ul>
+<li>יצירת מערך עם קביעת הרווחים:</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[17]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> 
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[17]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -2186,14 +2189,1631 @@ x is now 10
 In&nbsp;[18]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">x</span><span class="o">=</span><span class="mi">5</span>
-<span class="k">def</span> <span class="nf">setx</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">x</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
-    <span class="k">print</span> <span class="s">&quot;x is now </span><span class="si">%d</span><span class="s">, for real&quot;</span> <span class="o">%</span> <span class="n">x</span>
+<div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span>
+</pre></div>
 
-<span class="n">setx</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">x</span>
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[18]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([1, 3, 5, 7])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>לפי מספר הנקודות</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[20]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">c</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[20]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[23]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">endpoint</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">d</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[23]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 0. ,  0.2,  0.4,  0.6,  0.8])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>מערכים מלאים ב -1, ב-0 או &quot;מטריצות יחידה&quot;</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[24]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[24]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[ 1.,  1.,  1.,  1.],
+       [ 1.,  1.,  1.,  1.],
+       [ 1.,  1.,  1.,  1.]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[26]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[26]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[ 0.,  0.,  0.],
+       [ 0.,  0.,  0.]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[28]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">c</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[28]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[ 1.,  0.,  0.],
+       [ 0.,  1.,  0.],
+       [ 0.,  0.,  1.]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[30]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">d</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[30]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[1, 0, 0, 0],
+       [0, 2, 0, 0],
+       [0, 0, 3, 0],
+       [0, 0, 0, 4]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>מערכים אקראיים</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[31]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c">#uniform in [0,1]</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[31]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 0.95610256,  0.29084013,  0.9869527 ,  0.27287351])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[35]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="c"># Normal distribution</span>
+<span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[35]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[-0.08131966,  0.30165269, -0.69761869, -1.99499549],
+       [-1.6398278 ,  0.84688158, -0.22868927, -1.17677709],
+       [-1.353199  ,  0.42964633,  0.26015027,  0.29797787]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="טיפוסי-נתונים">טיפוסי נתונים</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>בדרך כלל, טיפוסי הנתונים של פייתון הם משתמעים. כאשר עושים נומריקה, לפעמים נחמד להגדיר אותם במפורש.</p>
+<p>עבור מעיף פייתוני, מוגדר &quot;טיפוס הנתונים של המערך&quot;, dtype.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[39]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[39]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+dtype(&apos;int64&apos;)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[40]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">3.</span><span class="p">])</span>
+<span class="n">b</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[40]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+dtype(&apos;float64&apos;)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>אפשר גם להגדיר מפורשות:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[41]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[41]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+dtype(&apos;float64&apos;)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>סוגים נוספים במתשמע:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[42]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="o">+</span><span class="mi">2j</span><span class="p">,</span> <span class="mi">3</span><span class="o">+</span><span class="mi">4j</span><span class="p">,</span> <span class="mi">5</span><span class="o">+</span><span class="mi">6</span><span class="o">*</span><span class="mi">1j</span><span class="p">])</span>
+<span class="n">d</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[42]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+dtype(&apos;complex128&apos;)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[43]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">])</span>
+<span class="n">e</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[43]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+dtype(&apos;bool&apos;)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[44]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s">&#39;Bonjour&#39;</span><span class="p">,</span> <span class="s">&#39;Hello&#39;</span><span class="p">,</span> <span class="s">&#39;Hallo&#39;</span><span class="p">,])</span>
+<span class="n">f</span><span class="o">.</span><span class="n">dtype</span>     <span class="c"># &lt;--- strings containing max. 7 letters</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[44]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+dtype(&apos;S7&apos;)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="אינדוקס-וחיתוך">אינדוקס וחיתוך</h1>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>צורת הגישה לאיברים במערך של numpy שונה במעט מצורת הגישה לאיברים במערך (או: רשימה) פייתוני רגיל, בפרט, במערך רב ממדי, אם כי צורת הגישה הסטנדרטית עובדת גם היא.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[45]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[45]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[0, 0, 0],
+       [0, 1, 0],
+       [0, 0, 2]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[46]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[46]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+1
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[47]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span> <span class="c"># third line, second column</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[47]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[ 0,  0,  0],
+       [ 0,  1,  0],
+       [ 0, 10,  2]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[48]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[48]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([0, 1, 0])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>נשים לב שבדו ממד, הממד הראשון מתייחס לשורות והשני לעמודות.</p>
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>פריסה</strong> של מערך, כמו עבור רשימות:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[49]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[49]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[50]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">9</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c"># [start:end:step]</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[50]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([2, 5, 8])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="figure">
+<img src="http://scipy-lectures.github.io/_images/numpy_indexing.png" alt="slicing" /><p class="caption">slicing</p>
+</div>
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>אם מציבים ערכים לתוך &quot;חלק&quot; ממערך, זה עובד יופי,</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[52]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[52]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[53]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[53]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 0,  1,  2,  3,  4, 10, 10, 10, 10, 10])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[55]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[55]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([0, 1, 2, 3, 4, 4, 3, 2, 1, 0])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="אינדוקס-מתחכם-יותר">אינדוקס מתחכם יותר</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>המושג המקצועי כאן הוא fancy indexing</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="אינדוקס-באמצעות-מסכה-בוליאנית">אינדוקס באמצעות &quot;מסכה בוליאנית&quot;</h3>
+<p>מעבירים מערך אם אותו אורך כמו המערך המקורי, כך שערכי המערך הם True או False. מקבלים רק את האיברים מהמערך המקורי עבורם העברנו True.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[56]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[56]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([10,  3,  8,  0, 19, 10, 11,  9, 10,  6,  0, 20, 12,  7, 14])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[58]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">%</span><span class="k">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">mask</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[58]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([False,  True, False,  True, False, False, False,  True, False,
+        True,  True, False,  True, False, False], dtype=bool)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>כלומר, קיבלנו מערך המתאים למערך המקורי, אבכל מקום שבו במערך המקורי יש מספר שמתחלק ב-3, במסכה יש True.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[59]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">extract_from_a</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">extract_from_a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[59]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 3,  0,  9,  6,  0, 12])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>אפשר גם לעשות את זה ישירות, ואפילו להציב מספרים.</p>
+<p>נציב <span class="math">\(-1\)</span> בכל המספרים שמתחלקים ב-3</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[60]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="p">[</span><span class="n">a</span><span class="o">%</span><span class="k">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[60]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([10, -1,  8, -1, 19, 10, 11, -1, 10, -1, -1, 20, -1,  7, 14])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[76]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> 
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[76]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[10,  3],
+       [ 8,  0],
+       [19, 10],
+       [11,  9],
+       [10,  6],
+       [ 0, 20],
+       [12,  7],
+       [14, 17]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[77]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">b</span><span class="p">[</span><span class="n">b</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[77]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[10,  3],
+       [ 8,  0],
+       [19, -1],
+       [11, -1],
+       [10,  6],
+       [ 0, 20],
+       [12, -1],
+       [14, -1]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div><div class="fragment">
+    
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>הצבנו 1 בעמודה השניה, בכל מקום בו העמודה הראשונה גדולה מ-10!</p>
+</div>
+    </div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="אינדוקס-באמצעות-מערך-של-שלמים">אינדוקס באמצעות מערך של שלמים</h3>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[79]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[79]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 0, 10, 20, 30, 40, 50, 60, 70, 80, 90])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[80]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>  <span class="c"># note: [2, 3, 2, 4, 2] is a Python list</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[80]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([20, 30, 20, 40, 20])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ניתן להציב גם ערכים חדשים:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[82]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="p">[[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[82]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([   0,   10,   20,   30,   40,   50,   60, -100,   80, -100])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="פעולות-על-אברי-המערך">פעולות על אברי המערך</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ניתן לבצע פעולות עם סקאלרים</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[83]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[83]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([2, 3, 4, 5])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[85]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[85]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 1,  4,  9, 16])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ולבצע פעולות אריתמטיות בין מערכים (איבר-איבר)</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[86]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[86]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([-1.,  0.,  1.,  2.])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[87]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[87]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 2.,  4.,  6.,  8.])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[88]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">j</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[88]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 2,  3,  6, 13, 28])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>במקרה זה, חשוב לשים לב שהמערכים הם מאותו גודל!</p>
+<p>פעולות אלו מהירות בהרבה מאשר ביצוע פעולות איבר-איבר על מערך באמצעות לולאות.</p>
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="כפל">כפל</h3>
+<p>חשוב להבדיל בין כפל-מטריצות שמתבצע באמצעות dot,</p>
+<p>לבית כפל איבר-איבר</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[89]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">c</span><span class="o">*</span><span class="n">c</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[89]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[ 1.,  1.,  1.],
+       [ 1.,  1.,  1.],
+       [ 1.,  1.,  1.]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[90]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[90]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[ 3.,  3.,  3.],
+       [ 3.,  3.,  3.],
+       [ 3.,  3.,  3.]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="עוד-דוגמאות">עוד דוגמאות</h3>
+<p>השוואות</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[91]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[91]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([False,  True, False,  True], dtype=bool)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[92]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[92]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([False, False,  True, False], dtype=bool)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>פעולות לוגיות</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[94]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[94]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ True,  True,  True, False], dtype=bool)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[95]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[95]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ True, False, False, False], dtype=bool)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>פונקציות שונות</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[96]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[96]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 0.        ,  0.84147098,  0.90929743,  0.14112001, -0.7568025 ,
+       -0.95892427, -0.2794155 ,  0.6569866 ,  0.98935825,  0.41211849])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[97]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2204,12 +3824,535 @@ In&nbsp;[18]:
 
 
 <div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="box-flex1 output_subarea output_stream output_stderr">
 <pre>
-x is now 10, for real
-10
+-c:1: RuntimeWarning: divide by zero encountered in log
 
 </pre>
+</div>
+</div>
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[97]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([       -inf,  0.        ,  0.69314718,  1.09861229,  1.38629436,
+        1.60943791,  1.79175947,  1.94591015,  2.07944154,  2.19722458])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[98]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[98]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([  1.00000000e+00,   2.71828183e+00,   7.38905610e+00,
+         2.00855369e+01,   5.45981500e+01,   1.48413159e+02,
+         4.03428793e+02,   1.09663316e+03,   2.98095799e+03,
+         8.10308393e+03])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ושוב, הגודל חייב להיות תואם:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[99]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">ValueError</span>                                Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-99-82c1c1d5b8c1&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">      1</span> a <span class="ansiyellow">=</span> np<span class="ansiyellow">.</span>arange<span class="ansiyellow">(</span><span class="ansicyan">4</span><span class="ansiyellow">)</span><span class="ansiyellow"></span>
+<span class="ansigreen">----&gt; 2</span><span class="ansiyellow"> </span>a <span class="ansiyellow">+</span> np<span class="ansiyellow">.</span>array<span class="ansiyellow">(</span><span class="ansiyellow">[</span><span class="ansicyan">1</span><span class="ansiyellow">,</span> <span class="ansicyan">2</span><span class="ansiyellow">]</span><span class="ansiyellow">)</span><span class="ansiyellow"></span>
+
+<span class="ansired">ValueError</span>: operands could not be broadcast together with shapes (4) (2) </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>שחלוף:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[101]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[101]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[ 0.,  1.,  1.],
+       [ 0.,  0.,  1.],
+       [ 0.,  0.,  0.]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[102]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[102]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[ 0.,  0.,  0.],
+       [ 1.,  0.,  0.],
+       [ 1.,  1.,  0.]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="צמצום-רשימות">צמצום רשימות</h3>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[103]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[103]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+10
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[104]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[104]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+10
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>במערכים רב ממדיים, ניתן לצמצם לפי ציר ספציפי,</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[129]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">x</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[129]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[1, 1],
+       [2, 2]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[130]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c"># columns (first dimension)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[130]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([3, 3])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[108]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[108]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+(3, 3)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[109]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c"># rows (second dimension)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[109]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([2, 4])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[110]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[110]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+(2, 4)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>אבל גם,</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[114]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[114]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 3.,  4.,  2.])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[115]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">y</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[115]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([ 2.,  2.,  1.])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[116]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[116]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+1
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[117]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[117]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([1, 2, 1])
+</pre>
+
 </div>
 </div>
 
@@ -2218,14 +4361,386 @@ x is now 10, for real
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="על-מה-לא-דיברנו">על מה לא דיברנו?</h2>
-<p>קצרה היריעה לתאר את כל המאפיינים של פונקציות בפייתון. הנה כמה דברים שלא נדבר עליהם:</p>
-<ul>
-<li>כתיבת תיעוד בתוך קוד הפונקציה, <em>docstring</em></li>
-<li>שינוי ערכים של פרמטרים בתוך פונקציה</li>
-<li>העברת מספר לא ידוע של פרמטרים לפונקציה: *args, **kwargs</li>
-<li>שימוש בפונקציות בתור &quot;משתנה&quot;</li>
-</ul>
+<p>ועוד</p>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="מניפולציה-על-הצורה-של-מערך">מניפולציה על הצורה של מערך</h2>
 </div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>שיטוח</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[119]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">a</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[119]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([1, 2, 3, 4, 5, 6])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[120]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[120]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[1, 4],
+       [2, 5],
+       [3, 6]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[121]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[121]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([1, 4, 2, 5, 3, 6])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>שינוי צורה</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[123]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[123]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+(2, 3)
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[124]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[124]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[1, 2, 3],
+       [4, 5, 6]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[125]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>    <span class="c"># unspecified (-1) value is inferred</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[125]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([[1, 2, 3],
+       [4, 5, 6]])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>שינוי גודל</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[126]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">8</span><span class="p">,))</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[126]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+array([0, 1, 2, 3, 0, 0, 0, 0])
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>אבל אם המערך הוא הפניה למערך אחר, זה לא יעבוד:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[127]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">4</span><span class="p">,))</span>   
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">ValueError</span>                                Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-127-fa61239db0dc&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">      1</span> b <span class="ansiyellow">=</span> a<span class="ansiyellow"></span>
+<span class="ansigreen">----&gt; 2</span><span class="ansiyellow"> </span>a<span class="ansiyellow">.</span>resize<span class="ansiyellow">(</span><span class="ansiyellow">(</span><span class="ansicyan">4</span><span class="ansiyellow">,</span><span class="ansiyellow">)</span><span class="ansiyellow">)</span><span class="ansiyellow"></span>
+
+<span class="ansired">ValueError</span>: cannot resize an array references or is referenced
+by another array in this way.  Use the resize function</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre>
+</pre></div>
+
+</div>
+</div>
+
+</div></section>
+    </section>
+</div>
+</div>
+
+<!--
+Uncomment the following block and the addthis_widget.js (see below inside dependencies)
+to get enable social buttons.
+-->
+
+<!--
+<div class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="left:20px;top:20px;">
+<a class="addthis_button_twitter"></a>
+<a class="addthis_button_google_plusone_share"></a>
+<a class="addthis_button_linkedin"></a>
+<a class="addthis_button_facebook"></a>
+<a class="addthis_button_more"></a>
+</div>
+-->
+
+<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/head.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/js/reveal.js"></script>
+
+<script>
+
+// Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls: true,
+progress: true,
+history: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/classList.js", condition: function() { return !document.body.classList; } },
+{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } }
+// { src: 'http://s7.addthis.com/js/300/addthis_widget.js', async: true},
+]
+});
+</script>
+
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script>
+<!-- End of mathjax configuration -->
+
+<script>
+//  We wait for the onload function to load MathJax after the page is completely loaded.
+//  MathJax is loaded 1 unit of time after the page is ready.
+//  This hack prevent problems when you load multiple js files (i.e. social button from addthis).
+//
+window.onload = function () {
+  setTimeout(function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  },1)
+}
+</script>
+
+<script>
+Reveal.addEventListener( 'slidechanged', function( event ) {
+MathJax.Hub.Rerender(event.currentSlide);
+});
+</script>
+
 </body>
+
 </html>

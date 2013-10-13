@@ -1713,38 +1713,70 @@ init_mathjax();
 <body>
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>
-<center>
-סדנאת פייתון לפיזיקאים
-</center>
-</h1>
-
-<h2 id="פונקציות">פונקציות</h2>
+<h1 id="סדנאת-פייתון-לפיזיקאים">סדנאת פייתון לפיזיקאים</h1>
+<h2 id="סקריפטים-מודולים-קבצים-ושגיאות">סקריפטים, מודולים, קבצים ושגיאות</h2>
+<p>עבודה עם קבצי קוד שונים</p>
 <p>הפקולטה לפיזיקה, הטכניון. חורף 2013</p>
 <p>מרצה: רונן אברבנאל</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>פונקציות</strong> הן קטעי קוד הנכתבים פעם אחת, ומבצעים סדרה של פעולות בכל פעם שהן נקראות. שימוש טוב בפונקציות מאפשר לכתוב קוד קריא יותר, ובקלות רבה יותר.</p>
-<p>פונקציות ב-C:</p>
-<pre><code>float location(int time, float x0, float v0, float a)
-{
-    return x0 + v0*t + a*a*t/2;
-}</code></pre>
-<p>בפייתון, כמו בפייתון, אין צורך להצהיר על טיפוסי פרמטרים ועל ערך החזרה.</p>
+<p>עד כה, עבדנו ישירות מול המפרש: הקלדנו פקודות והם בוצעו מיידית.</p>
+<p>זה נחמד לפעולות קטנות ופעולות ביניים, אבל זה קצת מטופש לעבוד ככה כל היום .</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="הגדרת-פונקציות">הגדרת פונקציות</h2>
+<p>מומלץ לעבוד עם עורך טקסט ש&quot;מכיר&quot; את פייתון: בפרט, כזה שצובע מילים שמורות בפייתון, כמו למשל כאן:</p>
+<pre><code> if 2==3:
+     pass</code></pre>
+<p>רצוי גם כזה שיודע לייצר 4 רווחים כשלוחצים על טאב, ויותר טוב: כזה שעושה טאב לבד כאשר מסיימים שורת קוד בנקודותיים.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>בכל מקרה, יש להשתמש בתוכנה שיוצרת קובץ טקסט פשוט. פנקס רשימות (notepad) יעשה את העבודה, גם אם לא טוב במיוחד. Word אפילו לא ינסה.</p>
+<p>אפשר להשתמש ב-scite שמגיע יחד עם ההתקנה של winPython, ב-notepad++ או באחד מעשרות עורכים טקסט אחרים.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="סקריפטים">סקריפטים</h1>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>סקריפט הוא קובץ המכיל רצף של פקודות בזו אחר זו, שמבוצעות על ידי המפרש. סקריפטי פייתון הם קובצי טקסט פשוטים, עם סיימות .py</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[1]:
+In&nbsp;[2]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s">&quot;in test function&quot;</span>
+<div class="highlight"><pre><span class="o">%</span><span class="k">load</span> <span class="o">../</span><span class="n">examples</span><span class="o">/</span><span class="n">example1</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
 
-<span class="n">test</span><span class="p">()</span>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Hello how are you?&quot;</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+    <span class="k">print</span> <span class="n">word</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>קובץ זה ניתן להריץ מתוך ipython באמצעות</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[3]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">run</span> <span class="o">../</span><span class="n">examples</span><span class="o">/</span><span class="n">example1</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 
 </div>
@@ -1757,7 +1789,10 @@ In&nbsp;[1]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-in test function
+Hello
+how
+are
+you?
 
 </pre>
 </div>
@@ -1767,23 +1802,13 @@ in test function
 </div>
 
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>תוכן הפונקציה מוזח פנימה, לציין שמדובר ב<em>בלוק</em> חדש.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="החזרת-ערך">החזרת ערך</h2>
-<p>מתבצעת באמצעות <em>return</em>. אין צורך להצהיר על טיפוס הנתונים המוחזר.</p>
-</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[2]:
+In&nbsp;[4]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">disk_area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span>
-
-<span class="n">disk_area</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">message</span>
 </pre></div>
 
 </div>
@@ -1794,12 +1819,12 @@ In&nbsp;[2]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
+    Out[4]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
 <pre>
-7.0649999999999995
+&apos;Hello how are you?&apos;
 </pre>
 
 </div>
@@ -1810,124 +1835,23 @@ In&nbsp;[2]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>** הגדרת פונקציה מורכבת ממספר חלקים **</p>
-<ul>
-<li>המילה השמורה <em>def</em></li>
-<li>לאחריה, שם הפונקציה.</li>
-<li>לאחר מכן, הארגומנטים המועברים לפונקציה, מוקפים בסוגריים ומופרדים על ידי פסיק. לאחר הסוגריים, השורה מסתיימת בנקודתיים.</li>
-<li>גוף הפונקציה.</li>
-<li>החזרת ערך, <em>return</em></li>
-</ul>
+<p>לאחר שהקובץ הורץ, אפשר לגשת למשתנים (הגלובאליים, אלו שלא נמצאים בשום פונקציה) מתוך הסביבה.</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="העברת-פרמטרים-לפונקציה">העברת פרמטרים לפונקציה</h2>
-<p>פרמטרים הכרחיים מועברים לפונקציה לפי הסדר</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[2]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">double_it</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
-<span class="n">double_it</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-6
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
+<p>ניתן להריץ סקריפט כ&quot;תוכנה עצמאית&quot; ישירות באמצעות המפרש,</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>אם מספר הפרמטרים המועברים לפונקציה שונה ממספר הפרמטרים ההכרחיים, תתרחש שגיאה,</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[3]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">double_it</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_pyerr">
-<pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-3-51cdedbb81b0&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span>double_it<span class="ansiyellow">(</span><span class="ansiyellow">)</span><span class="ansiyellow"></span>
-
-<span class="ansired">TypeError</span>: double_it() takes exactly 1 argument (0 given)</pre>
-</div>
-</div>
-
-</div>
-</div>
-
+<pre><code> $ python example1.py
+ Hello
+ how
+ are
+ you?</code></pre>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ניתן להגדיר פרמטרים אופציונאלים, ולהם ערך ברירת מחדל. פרמטרים כאלו לא חייבים להעביר לפונקציה.</p>
+<h1 id="יבוא-ושימוש-במודולים">יבוא ושימוש במודולים</h1>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[5]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">double_it</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
-<span class="n">double_it</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[5]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-4
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>רק חלק מה&quot;פקודות&quot; והפונקציות של פייתון זמינות מרגע שפחנו את המפרש (או, מרגע שהתחלנו לכתוב קוד). חלק מהפקודות והפונקציות נמצאות בתוך &quot;מודולים&quot; אותם יש לייבא במפורש.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -1935,7 +1859,8 @@ In&nbsp;[5]:
 In&nbsp;[6]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">double_it</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span>
 </pre></div>
 
 </div>
@@ -1951,7 +1876,7 @@ In&nbsp;[6]:
 
 
 <pre>
-6
+&lt;module &apos;os&apos; from &apos;/usr/lib/python2.7/os.pyc&apos;&gt;
 </pre>
 
 </div>
@@ -1961,18 +1886,13 @@ In&nbsp;[6]:
 </div>
 
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>פרמטרים אופציונאליים חייבים לבוא אחרונים (אלא אם כן קוראים בשמם)</p>
-</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[9]:
+In&nbsp;[7]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">location</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">9.8</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1983,14 +1903,281 @@ In&nbsp;[9]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[9]:</div>
+    Out[7]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
 <pre>
-122.50000000000001
+[&apos;.ipynb_checkpoints&apos;,
+ &apos;lecture1.ipynb&apos;,
+ &apos;lecture2.ipynb&apos;,
+ &apos;lecture4.ipynb&apos;,
+ &apos;Untitled0.ipynb&apos;,
+ &apos;lecture3.ipynb&apos;]
 </pre>
 
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>למשל, המודול os מכיל פקודות הקשורות לקבצים ולמערכת ההפעלה, למשל, הפונקציה listdir שמקבלת שם של ספריה ומחזירה רשימה של קבצים הנמצאים בספריה</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>אפשר לייבא גם פקודות בודדות מתוך מודול:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[8]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">listdir</span>
+<span class="n">listdir</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[8]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+[&apos;.ipynb_checkpoints&apos;,
+ &apos;lecture1.ipynb&apos;,
+ &apos;lecture2.ipynb&apos;,
+ &apos;lecture4.ipynb&apos;,
+ &apos;Untitled0.ipynb&apos;,
+ &apos;lecture3.ipynb&apos;]
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>וכן לשנות את השם של מודולים מיובאים לשם קיצור, למשל,</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[10]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>הערה</strong> אפשר ליבא את כל הפונקציות מתוך מודול מסויים באמצעות *, למשל,</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[11]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>זה נוח, אבל עלול גם ליצור בעיות, בפרט, אם יובאו שני מודולים ובהם פונקציות עם אותו השם. לכן, יש להמנע מזה.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="עבודה-עם-קבצי-טקסט">עבודה עם קבצי טקסט</h1>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>כתיבת וקריאת קבצי טקסט &quot;פשוטים&quot; בפייתון היא עסק פשוט למדי, אבל נדון בו רש בשטחיות. בהמשך, נראה איך עובדים עם קבצים &quot;מסובכים&quot; יותר.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[3]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;somefile.txt&quot;</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[4]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">f</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[4]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+&lt;open file &apos;somefile.txt&apos;, mode &apos;w&apos; at 0xa441cd8&gt;
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>כאן, הפרמטר הראשון הוא שם הקובץ, והפרמטר השני הוא אחד (או יותר) מהתווים r,w,a, על מנת לפתוח את הקובץ לקריאה בלבד, לכתיבה או להוספת טקסט בסופו.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[6]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;This is content of a file</span><span class="se">\n</span><span class="s"> with two lines&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>חשוב מאוד לסגור קובץ בגמר השימוש!</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>כדי לקרוא מקובץ,</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[7]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;somefile.txt&quot;</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">content</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+This is content of a file
+ with two linesThis is content of a file
+ with two lines
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="טיפול-בשגיאות">טיפול בשגיאות</h1>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>בדוגמאות השונות ראינו מדי פעם שהמפרש זרק עלינו שגיאה. כשכותבים קוד ישירות זה נחמד - יודעים שהיתה בעיה ופועלים בהתאם, אבל אם כותבים סקריפטים ארוכים, שגיאה כזו גורמת להפסקת הריצה.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="שגיאות-לדוגמה">שגיאות לדוגמה</h3>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[8]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">ZeroDivisionError</span>                         Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-8-05c9758a9c21&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span><span class="ansicyan">1</span><span class="ansiyellow">/</span><span class="ansicyan">0</span><span class="ansiyellow"></span>
+
+<span class="ansired">ZeroDivisionError</span>: integer division or modulo by zero</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[9]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<span class="n">d</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-9-38f25624df81&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">      1</span> d <span class="ansiyellow">=</span> <span class="ansiyellow">{</span><span class="ansicyan">1</span><span class="ansiyellow">:</span><span class="ansicyan">1</span><span class="ansiyellow">,</span> <span class="ansicyan">2</span><span class="ansiyellow">:</span><span class="ansicyan">2</span><span class="ansiyellow">}</span><span class="ansiyellow"></span>
+<span class="ansigreen">----&gt; 2</span><span class="ansiyellow"> </span>d<span class="ansiyellow">[</span><span class="ansicyan">3</span><span class="ansiyellow">]</span><span class="ansiyellow"></span>
+
+<span class="ansired">KeyError</span>: 3</pre>
 </div>
 </div>
 
@@ -2004,7 +2191,8 @@ In&nbsp;[9]:
 In&nbsp;[10]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -2014,24 +2202,22 @@ In&nbsp;[10]:
 <div class="output vbox">
 
 
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[10]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_pyerr">
 <pre>
-525
-</pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">IndexError</span>                                Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-10-0e767cd8fb1f&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">      1</span> l <span class="ansiyellow">=</span> <span class="ansiyellow">[</span><span class="ansicyan">1</span><span class="ansiyellow">,</span><span class="ansicyan">2</span><span class="ansiyellow">,</span><span class="ansicyan">3</span><span class="ansiyellow">]</span><span class="ansiyellow"></span>
+<span class="ansigreen">----&gt; 2</span><span class="ansiyellow"> </span>l<span class="ansiyellow">[</span><span class="ansicyan">3</span><span class="ansiyellow">]</span><span class="ansiyellow"></span>
+
+<span class="ansired">IndexError</span>: list index out of range</pre>
+</div>
+</div>
 
 </div>
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>ניתן להעביר פרמטרים גם לפי שמם: הפרמטרים הראשונים חייבים לבוא לפי הסדר, ולאחר מכן, בכל סדר שהוא:</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -2039,7 +2225,7 @@ In&nbsp;[10]:
 In&nbsp;[11]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nb">open</span><span class="p">(</span><span class="s">&quot;there_is_no_file&quot;</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2049,21 +2235,27 @@ In&nbsp;[11]:
 <div class="output vbox">
 
 
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[11]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_pyerr">
 <pre>
-525
-</pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">IOError</span>                                   Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-11-b30199f33520&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span>open<span class="ansiyellow">(</span><span class="ansiblue">&quot;there_is_no_file&quot;</span><span class="ansiyellow">,</span><span class="ansiblue">&quot;r&quot;</span><span class="ansiyellow">)</span><span class="ansiyellow"></span>
+
+<span class="ansired">IOError</span>: [Errno 2] No such file or directory: &apos;there_is_no_file&apos;</pre>
+</div>
+</div>
 
 </div>
 </div>
 
 </div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="התמודדות-עם-שגיאות">התמודדות עם שגיאות</h2>
 </div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>כדי לתפוס שגיאות, אפשר להשתמש ב-<em>try</em>, <em>except</em></p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -2071,7 +2263,10 @@ In&nbsp;[11]:
 In&nbsp;[12]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">location</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">x0</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="nb">open</span><span class="p">(</span><span class="s">&quot;there_is_no_such_file&quot;</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;some error happend!&quot;</span>
 </pre></div>
 
 </div>
@@ -2081,15 +2276,12 @@ In&nbsp;[12]:
 <div class="output vbox">
 
 
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[12]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-524
-</pre>
+some error happend!
 
+</pre>
 </div>
 </div>
 
@@ -2098,8 +2290,7 @@ In&nbsp;[12]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="משתנים-גלובאליים">משתנים גלובאליים</h2>
-<p>למשתנים המוגדרים מחוץ לפונקציה, ניתן להתייחס בתוך הפונקציה:</p>
+<p>אפשר לתפוס שגיאה ולא לעשות כלום באמצעות <em>pass</em></p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -2107,10 +2298,33 @@ In&nbsp;[12]:
 In&nbsp;[13]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="k">def</span> <span class="nf">addx</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
-<span class="n">addx</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">pass</span> <span class="c">#Do nothing</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>הערה</strong> פייתון לא אוהב בלוקים ריקים. אם איפשהו אתם כותבים בלוק ואין לכם מה לכתוב בו, שימו בו Pass.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>אפשר גם לתפוס שגיאות מסוגים ספציפיים:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[14]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">l</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;Key Error catched&quot;</span>
 </pre></div>
 
 </div>
@@ -2120,13 +2334,118 @@ In&nbsp;[13]:
 <div class="output vbox">
 
 
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">IndexError</span>                                Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-14-3bf3e93f1555&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">      1</span> <span class="ansigreen">try</span><span class="ansiyellow">:</span><span class="ansiyellow"></span>
+<span class="ansigreen">      2</span>     l <span class="ansiyellow">=</span> <span class="ansiyellow">[</span><span class="ansicyan">1</span><span class="ansiyellow">,</span><span class="ansicyan">2</span><span class="ansiyellow">,</span><span class="ansicyan">3</span><span class="ansiyellow">]</span><span class="ansiyellow"></span>
+<span class="ansigreen">----&gt; 3</span><span class="ansiyellow">     </span>l<span class="ansiyellow">[</span><span class="ansicyan">4</span><span class="ansiyellow">]</span><span class="ansiyellow"></span>
+<span class="ansigreen">      4</span> <span class="ansigreen">except</span> KeyError<span class="ansiyellow">:</span><span class="ansiyellow"></span>
+<span class="ansigreen">      5</span>     <span class="ansigreen">print</span> <span class="ansiblue">&quot;Key Error catched&quot;</span><span class="ansiyellow"></span>
+
+<span class="ansired">IndexError</span>: list index out of range</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>כאן, הקוד זרק IndexError אבל ניסינו לתפוס רק KeyError, אז הוא לא נתפס. לו היינו כותבים,</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[15]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">l</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;Index Error catched&quot;</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+Index Error catched
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>אבל למה לתפוס רק סוגים מסויימים של שגיאות?</p>
+<p>לפעמים סוגים מסויימים של שגיאות הם &quot;חוקיים&quot; - אם הקובץ לא נמצא אפשר לעבור הלאה, אבל בטעות חילקנו באפס, זו קטסטרופה, ואנחנו רוצים להודיע למשתמש.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>לא חייבים לתפוס שגיאות מיד. אפשר גם לתת להן לצוף &quot;למעלה&quot;</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[19]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">open_end_divide</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;file opened&quot;</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="mf">1.</span><span class="o">/</span><span class="n">number</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[20]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">open_end_divide</span><span class="p">(</span><span class="s">&quot;somefile.txt&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+file opened
+
+</pre>
+</div>
+</div>
+
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[13]:</div>
+    Out[20]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
 <pre>
-15
+0.3333333333333333
 </pre>
 
 </div>
@@ -2136,24 +2455,18 @@ In&nbsp;[13]:
 </div>
 
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>אבל משתנים כאלו, לא ניתן לשנות בתוך הפונקציה, אלא אם כן מחריזים עליהם כגלובלים.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>הדוגמה הבאה אינה עובדת:</p>
-</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[16]:
+In&nbsp;[21]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">x</span><span class="o">=</span><span class="mi">5</span>
-<span class="k">def</span> <span class="nf">setx</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
-    <span class="k">print</span> <span class="s">&quot;x is now </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">x</span>
-<span class="n">setx</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">x</span>
+<div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="n">open_end_divide</span><span class="p">(</span><span class="s">&quot;nofile.txt&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;could not open file, that&#39;s bad&quot;</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;division by zero. I don&#39;t care&quot;</span>
 </pre></div>
 
 </div>
@@ -2166,8 +2479,7 @@ In&nbsp;[16]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-x is now 10
-5
+could not open file, that&apos;s bad
 
 </pre>
 </div>
@@ -2177,23 +2489,18 @@ x is now 10
 </div>
 
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>אם נשתמש במילה השמורה <em>global</em>...</p>
-</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[18]:
+In&nbsp;[22]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">x</span><span class="o">=</span><span class="mi">5</span>
-<span class="k">def</span> <span class="nf">setx</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">x</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
-    <span class="k">print</span> <span class="s">&quot;x is now </span><span class="si">%d</span><span class="s">, for real&quot;</span> <span class="o">%</span> <span class="n">x</span>
-
-<span class="n">setx</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">x</span>
+<div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="n">open_end_divide</span><span class="p">(</span><span class="s">&quot;somefile.txt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;could not open file, that&#39;s bad&quot;</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;division by zero. I don&#39;t care&quot;</span>
 </pre></div>
 
 </div>
@@ -2206,8 +2513,8 @@ In&nbsp;[18]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-x is now 10, for real
-10
+file opened
+division by zero. I don&apos;t care
 
 </pre>
 </div>
@@ -2216,16 +2523,6 @@ x is now 10, for real
 </div>
 </div>
 
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="על-מה-לא-דיברנו">על מה לא דיברנו?</h2>
-<p>קצרה היריעה לתאר את כל המאפיינים של פונקציות בפייתון. הנה כמה דברים שלא נדבר עליהם:</p>
-<ul>
-<li>כתיבת תיעוד בתוך קוד הפונקציה, <em>docstring</em></li>
-<li>שינוי ערכים של פרמטרים בתוך פונקציה</li>
-<li>העברת מספר לא ידוע של פרמטרים לפונקציה: *args, **kwargs</li>
-<li>שימוש בפונקציות בתור &quot;משתנה&quot;</li>
-</ul>
 </div>
 </body>
 </html>
