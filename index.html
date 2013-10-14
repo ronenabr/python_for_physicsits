@@ -48,10 +48,12 @@
         <ul class="nav nav-pills pull-left">
           <li><a href="#dates">תאריכים</a></li>
           <li><a href="#notes">רשימות</a></li>
+          <li><a href="#syllabus">סילבוס והתקנה</a></li>
           <li><a href="#links">קישורים</a></li>
         </ul>
 
-        <h3 class="text-muted">סדנאת פייתון לפיזיקאים, טכניון, חורף 
+        <h3 class="text-muted">סדנאת פייתון לפיזיקאים,<br/>
+ טכניון, חורף 
 2013
         </h3>
       </div>
@@ -139,30 +141,54 @@
         </div>
     </div>
     <div class="panel panel-info" id="syllabus">
-        <div class="panel-heading"><h3>סילבוס</h3></div>
+        <div class="panel-heading"><h3>סילבוס <small><a href="#top"<span class="glyphicon glyphicon-arrow-up pull-left"></a></small> </h3></div>
         <div class="panel-body">
+הנושאים שילמדו בסדנה הם:
             <ul>
                 <li> הרצת תוכנית פייתון.</li>
                 <li> תחביר בסיסי וכתיבת תוכנות פשוטות.</li>
-                <li> שיטות עבודה וסביבות עבודה:
+                <li  id="tools"> שיטות עבודה וסביבות עבודה:
 <a href="">IPython</a> ו- <a href="">Spyder</a>.
 </li>
                 <li> ספריות לשימוש מדעי 
                     <ul>
-                        <li><a href="http://www.numpy.org/">numpy</a></li>
-                        <li><a href="http://matplotlib.org/">matplotlib</a></li>
-                        <li><a href="http://www.scipy.org/">scipy</a></li>
-                        <li><a href="http://pandas.pydata.org/">pandas</a></li>
+                        <li><a href="http://www.numpy.org/">numpy</a> - ספריית שלד לנומריקה.</li>
+                        <li><a href="http://matplotlib.org/">matplotlib</a> - ספריה לציור גרפים.</li>
+                        <li><a href="http://www.scipy.org/">scipy</a> - ספריה כללית לשימוש מדעי.</li>
+                        <li><a href="http://pandas.pydata.org/">pandas</a> - ספריה לעיבוד נתונים.</li>
                     </ul>
                 </li>
             </ul>
+            <p>
+                במהלך הסדנה ינתנו מספר תרגילים קצרצרים ותוכלו להתנסות ולשאול שאלות בהתאם. מספר המחשבים השולחניים הזמינים במקום קטן ממספר הנרשמים לסדנה ולכן כדאי להגיע עם מחשב נייד עם פייתון מותקן. 
+            </p>
+            <p>
+   הסדנה מניחה ידע מוקדם בשפת תכנות כלשהי: הכרות כללית עם מושגים כמו פונקציות, לולאות, משתנים וכו'. 
+            </p>
+            <h4 class="text-success">התקנה</h4>
+            <p> <strong class="text-success">בלינוקס</strong>
+        יש להתקין באמצעות מנהל החבילות של ההפצה את החבילות של python, ipython, numpy, scipy, matplotlib ו-pandas. באובונטו/ דביאן
+                <pre dir="ltr" style="background-color: #eeeeee; border : 1;">
+$ sudo apt-get install python ipython ipython-notebook ipython-qtconsole python-numpy python-scipy python-matplotlib python-pandas
+                </pre> 
+            </p>
+            <p></p>
+            <p> <strong class="text-success"> בחלונות </strong>
+                מומלץ להתקין את 
+                <a href="http://code.google.com/p/winpython/">WinPython </a>. 
+                זוהי התקנה הכוללת מספר חבילות פייתון, ובפרט, את החבילות שנשתמש בהן בסדנה זו.   החבילה יכולה להיות מותקנת במתכונת "פורטבילית", על כונן נייד, או ללא הרשאות ניהול במחשב.
+                <span class="text-warning">
+                                      מומלץ להתקין את גרסא
+                <span dir="ltr"> 2.7.x</span>. </span>
+            </p>
         </div>
     </div>
     <div class="panel panel-info" id="links">
         <div class="panel-heading"><h3>קישורים <small><a href="#top"<span class="glyphicon glyphicon-arrow-up pull-left"></a></small> </h3></span>
 </div>
          <div class="panel-body">
-
+        בנוסף לאתרים הללו, האתר של כל אחת מהספריות והכלים כולל תיעוד מקיף אודות השימוש בו (ראו 
+<a href="#tools">סילבוס</a> ).
         </div>
         <div class="list-group">
             <a href="http://code.google.com/p/winpython/" class="list-group-item">
@@ -170,7 +196,7 @@
                 <p class="list-group-item-text">התקנת פייתון לווינדוס, המכילה, בין השאר, את כל הכלים שנשתמש בהם בסדנה. החבילה יכולה להיות מותקנת במתכונת "פורטבילית", על כונן נייד, או ללא הרשאות ניהול במחשב.
                 <span class="text-warning">
                       מומלץ להתקין את גרסא
-<span dir="ltr"> 2.7.x</span>.
+<span dir="ltr"> 2.7.x</span>. </span>
                 </p>
   </p>
               </a>
@@ -189,28 +215,7 @@
                 <h4 class="list-group-item-heading">learnpython.org</h4>
                 <p class="list-group-item-text">אתר אינטראקטיבי ללימוד פייתון. מאפשר לכתוב ולהריץ קוד בתוך האתר.  </p>
               </a>
-<!--
 
-            <a href="http://www.scipy.org/" class="list-group-item">
-                <h4 class="list-group-item-heading">SciPy.org</h4>
-                <p class="list-group-item-text">אתר מטריה למספר ספריות פייתון לשימוש מדעי. </p>
-              </a>
-
-            <a href="http://ipython.org/" class="list-group-item">
-                <h4 class="list-group-item-heading">IPython</h4>
-                <p class="list-group-item-text">סביבת עבודה אינטראקטיבית בפייתון. תיעוד ודוגמאות.</p>
-              </a>
-            <a href="http://matplotlib.org/" class="list-group-item">
-                <h4 class="list-group-item-heading">matplotlib</h4>
-                <p class="list-group-item-text">ספריה לציור גרפים בפייתון. תיעוד וגלריית גרפים עשירה. </p>
-            </a>
-
-            <a href="http://pandas.pydata.org/" class="list-group-item">
-                <h4 class="list-group-item-heading">Pandas</h4>
-                <p class="list-group-item-text">ספריה לעיבוד נתונים בפייתון, תיעוד ודוגמאות. </p>
-              </a>
-
--->
             <a href="http://he.wikibooks.org/wiki/%D7%A4%D7%99%D7%99%D7%AA%D7%95%D7%9F" class="list-group-item">
                 <h4 class="list-group-item-heading">פייתון בויקיספרים</h4>
                 <p class="list-group-item-text">מדריך תכנות פייתון בעברית. עוד לא מושלם. </p>
