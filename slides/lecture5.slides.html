@@ -1481,8 +1481,7 @@ input.engine_num_input{height:20px;margin-bottom:2px;padding-top:0;padding-botto
 .ansibgpurple{background-color:magenta;}
 .ansibgcyan{background-color:cyan;}
 .ansibggray{background-color:gray;}
-.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;}.cell.selected{border-radius:4px;border:thin #ababab solid;}
-div.cell{width:100%;padding:5px 5px 5px 0px;margin:2px 0px 2px 7px;outline:none;}
+div.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;padding:5px 5px 5px 0px;margin:2px 0px 2px 7px;outline:none;}div.cell.selected{border-radius:4px;border:thin #ababab solid;}
 div.prompt{width:11ex;padding:0.4em;margin:0px;font-family:monospace;text-align:right;line-height:1.231em;}
 .celltoolbar{border:thin solid #CFCFCF;border-bottom:none;background:#EEE;border-top-right-radius:3px;border-top-left-radius:3px;width:100%;-webkit-box-pack:end;height:22px;}
 .no_input_radius{border-top-right-radius:0px;border-top-left-radius:0px;}
@@ -1787,10 +1786,10 @@ div.output_prompt {
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[2]:
+In&nbsp;[6]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%</span><span class="k">load</span> <span class="o">../</span><span class="n">examples</span><span class="o">/</span><span class="n">example1</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span class="o">%</span><span class="k">load</span> <span class="o">../</span><span class="n">example_code</span><span class="o">/</span><span class="n">example1</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 
 </div>
@@ -1821,7 +1820,7 @@ In&nbsp;[]:
 In&nbsp;[3]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%</span><span class="k">run</span> <span class="o">../</span><span class="n">examples</span><span class="o">/</span><span class="n">example1</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span class="o">%</span><span class="k">run</span>  <span class="o">../</span><span class="n">example_code</span><span class="o">/</span><span class="n">example1</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 
 </div>
@@ -1899,6 +1898,30 @@ In&nbsp;[4]:
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>רק חלק מה&quot;פקודות&quot; והפונקציות של פייתון זמינות מרגע שפחנו את המפרש (או, מרגע שהתחלנו לכתוב קוד). חלק מהפקודות והפונקציות נמצאות בתוך &quot;מודולים&quot; אותם יש לייבא במפורש.</p>
+</div></section><section>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[7]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">antigravity</span>
+</pre></div>
+
+</div>
+</div>
+
+</div><div class="fragment">
+    
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="http://imgs.xkcd.com/comics/python.png" alt="xkcd" />
+</center>
+
+</div>
+    </div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>אחד המודולים השימושיים והנפוצים בפייתון הוא המודל os המכיל פקודות שקשורות לקבצים, למחשב ולמערכת ההפעלה</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -1971,7 +1994,7 @@ In&nbsp;[7]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>למשל, המודול os מכיל פקודות הקשורות לקבצים ולמערכת ההפעלה, למשל, הפונקציה listdir שמקבלת שם של ספריה ומחזירה רשימה של קבצים הנמצאים בספריה</p>
+<p>למשל, הפונקציה listdir שמקבלת שם של ספריה ומחזירה רשימה של קבצים הנמצאים בספריה</p>
 </div></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>אפשר לייבא גם פקודות בודדות מתוך מודול:</p>
@@ -2060,7 +2083,7 @@ In&nbsp;[11]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[3]:
+In&nbsp;[9]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;somefile.txt&quot;</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">)</span>
@@ -2073,7 +2096,7 @@ In&nbsp;[3]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[4]:
+In&nbsp;[13]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">f</span>
@@ -2087,12 +2110,12 @@ In&nbsp;[4]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[4]:</div>
+    Out[13]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
 <pre>
-&lt;open file &apos;somefile.txt&apos;, mode &apos;w&apos; at 0xa441cd8&gt;
+&lt;open file &apos;somefile.txt&apos;, mode &apos;w&apos; at 0x2e774b0&gt;
 </pre>
 
 </div>
@@ -2108,7 +2131,7 @@ In&nbsp;[4]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[6]:
+In&nbsp;[14]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;This is content of a file</span><span class="se">\n</span><span class="s"> with two lines&quot;</span><span class="p">)</span>
@@ -2128,7 +2151,7 @@ In&nbsp;[6]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[7]:
+In&nbsp;[15]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;somefile.txt&quot;</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">)</span>
@@ -2148,7 +2171,6 @@ In&nbsp;[7]:
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 This is content of a file
- with two linesThis is content of a file
  with two lines
 
 </pre>
@@ -2199,7 +2221,7 @@ In&nbsp;[8]:
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -2267,7 +2289,7 @@ In&nbsp;[10]:
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -2358,7 +2380,7 @@ In&nbsp;[13]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>הערה</strong> פייתון לא אוהב בלוקים ריקים. אם איפשהו אתם כותבים בלוק ואין לכם מה לכתוב בו, שימו בו Pass.</p>
+<p><strong>הערה</strong> פייתון לא אוהב בלוקים ריקים. אם איפשהו אתם כותבים בלוק ואין לכם מה לכתוב בו, שימו בו pass.</p>
 </div></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>אפשר גם לתפוס שגיאות מסוגים ספציפיים:</p>
@@ -2402,7 +2424,7 @@ In&nbsp;[14]:
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>כאן, הקוד זרק IndexError אבל ניסינו לתפוס רק KeyError, אז הוא לא נתפס. לו היינו כותבים,</p>
 </div>
@@ -2511,7 +2533,7 @@ In&nbsp;[21]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
-    <span class="n">open_end_divide</span><span class="p">(</span><span class="s">&quot;nofile.txt&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">open_end_divide</span><span class="p">(</span><span class="s">&quot;nofile.tמxt&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
     <span class="k">print</span> <span class="s">&quot;could not open file, that&#39;s bad&quot;</span>
 <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
@@ -2572,6 +2594,22 @@ division by zero. I don&apos;t care
 </div>
 </div>
 
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="תרגילון">תרגילון</h1>
+<ol style="list-style-type: decimal">
+<li>כתבו תוכנית (בקובץ הנפרד) המבצעת:</li>
+</ol>
+<ul>
+<li>מקבלת שני פרמטרים משורת הפקודה.</li>
+</ul>
+<p>השתמשו ברשימה argv שנמצאת במודול sys * הפרמטר הראשון הוא שם ספריה והפרמטר השני הוא מילה לחיפוש. * התוכנית מדפיסה את שמות כל קבצי ה-.py בספריה המופיעה בפרמטר הראשון, המכילים את המילה בפרמטר השני.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>מה קורה כאשר התוכנית שכתבתם לעיל מקבלת שם ספריה שאינו קיים?</li>
+</ol>
+<p>נסו לפתוח ספריה לא קיימת וקבלו הודעת שגיאה. שנו את התוכנית כך שאם הספריה לא קיימת, התוכנית לא תבצע דבר, ורק תדפיס הודעת שגיאה.</p>
 </div></section>
     </section>
 </div>

@@ -1458,8 +1458,7 @@ input.engine_num_input{height:20px;margin-bottom:2px;padding-top:0;padding-botto
 .ansibgpurple{background-color:magenta;}
 .ansibgcyan{background-color:cyan;}
 .ansibggray{background-color:gray;}
-.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;}.cell.selected{border-radius:4px;border:thin #ababab solid;}
-div.cell{width:100%;padding:5px 5px 5px 0px;margin:2px 0px 2px 7px;outline:none;}
+div.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;padding:5px 5px 5px 0px;margin:2px 0px 2px 7px;outline:none;}div.cell.selected{border-radius:4px;border:thin #ababab solid;}
 div.prompt{width:11ex;padding:0.4em;margin:0px;font-family:monospace;text-align:right;line-height:1.231em;}
 .celltoolbar{border:thin solid #CFCFCF;border-bottom:none;background:#EEE;border-top-right-radius:3px;border-top-left-radius:3px;width:100%;-webkit-box-pack:end;height:22px;}
 .no_input_radius{border-top-right-radius:0px;border-top-left-radius:0px;}
@@ -2353,7 +2352,7 @@ In&nbsp;[31]:
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="טיפוסי-נתונים-מורכבים---מיכלים">טיפוסי נתונים מורכבים - מיכלים</h1>
-<p>פייתון מכיל מספר סוגי מיכלים יעילים למדי, בהם ניתן לאכסן מספר משתנים &quot;בסיסיים&quot;</p>
+<p>(containers) פייתון מכיל מספר סוגי מיכלים יעילים למדי, בהם ניתן לאכסן מספר משתנים &quot;בסיסיים&quot;</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="רשימות">רשימות</h2>
@@ -2362,7 +2361,7 @@ In&nbsp;[31]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[32]:
+In&nbsp;[1]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">L</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;red&#39;</span><span class="p">,</span><span class="s">&#39;blue&#39;</span><span class="p">,</span><span class="s">&#39;green&#39;</span><span class="p">,</span> 
@@ -2378,7 +2377,7 @@ In&nbsp;[32]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[32]:</div>
+    Out[1]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -3073,11 +3072,11 @@ with newline and 	 tab and \
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[53]:
+In&nbsp;[2]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">s7</span> <span class="o">=</span> <span class="s">r&quot;i&#39;m a string\not string&quot;</span>
-<span class="n">s7</span>
+<span class="n">s7</span>    
 </pre></div>
 
 </div>
@@ -3088,7 +3087,7 @@ In&nbsp;[53]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[53]:</div>
+    Out[2]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -3106,7 +3105,7 @@ In&nbsp;[53]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[6]:
+In&nbsp;[4]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">print</span> <span class="n">s7</span>
@@ -3120,14 +3119,11 @@ In&nbsp;[6]:
 
 
 <div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_pyerr">
+<div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">NameError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-6-0bbc8c84e4dd&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span><span class="ansigreen">print</span> s7<span class="ansiyellow"></span>
+i&apos;m a string\not string
 
-<span class="ansired">NameError</span>: name &apos;s7&apos; is not defined</pre>
+</pre>
 </div>
 </div>
 
@@ -3136,7 +3132,7 @@ In&nbsp;[6]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ניתן לפרוס מחרוזת כמו שפורסים רשימה,</p>
+<p>ניתן לפרוס (slice) מחרוזת כמו שפורסים רשימה,</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -3177,7 +3173,7 @@ In&nbsp;[55]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[56]:
+In&nbsp;[2]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="s">&quot;hello, world!&quot;</span>
@@ -3196,7 +3192,7 @@ In&nbsp;[56]:
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-56-8f124c87c8cf&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">&lt;ipython-input-2-8f124c87c8cf&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
 <span class="ansigreen">      1</span> a <span class="ansiyellow">=</span> <span class="ansiblue">&quot;hello, world!&quot;</span><span class="ansiyellow"></span>
 <span class="ansigreen">----&gt; 2</span><span class="ansiyellow"> </span>a<span class="ansiyellow">[</span><span class="ansicyan">2</span><span class="ansiyellow">]</span> <span class="ansiyellow">=</span> <span class="ansiblue">&apos;z&apos;</span><span class="ansiyellow"></span>
 
@@ -3211,7 +3207,7 @@ In&nbsp;[56]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[3]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="s">&#39;z&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -3220,15 +3216,53 @@ In&nbsp;[]:
 </div>
 </div>
 
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[3]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+&apos;hezlo, world!&apos;
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[4]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="s">&#39;z&#39;</span><span class="p">)</span>
 </pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[4]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+&apos;hezzo, worzd!&apos;
+</pre>
+
+</div>
+</div>
 
 </div>
 </div>
@@ -3249,24 +3283,10 @@ help(&quot;a&quot;.replace)
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[5]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="s">&quot;an integer </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="mi">42</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[57]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415</span>
-<span class="s">&quot;and integer </span><span class="si">%d</span><span class="s">, a float </span><span class="si">%f</span><span class="s">, and a string </span><span class="si">%s</span><span class="s">&quot;</span>  <span class="o">%</span>  <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s">&quot;moo&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3276,16 +3296,15 @@ In&nbsp;[57]:
 <div class="output vbox">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_pyerr">
-<pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">NameError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-57-bb7f5b008a0a&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">      1</span> pi <span class="ansiyellow">=</span> <span class="ansicyan">3.1415</span><span class="ansiyellow"></span>
-<span class="ansigreen">----&gt; 2</span><span class="ansiyellow"> </span><span class="ansiblue">&quot;and integer %d, a float %f, and a string %s&quot;</span>  <span class="ansiyellow">%</span>  <span class="ansiyellow">(</span><span class="ansicyan">42</span><span class="ansiyellow">,</span> f<span class="ansiyellow">,</span> <span class="ansiblue">&quot;moo&quot;</span><span class="ansiyellow">)</span><span class="ansiyellow"></span>
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[5]:</div>
+<div class="box-flex1 output_subarea output_pyout">
 
-<span class="ansired">NameError</span>: name &apos;f&apos; is not defined</pre>
+
+<pre>
+&apos;an integer 42&apos;
+</pre>
+
 </div>
 </div>
 
@@ -3296,7 +3315,40 @@ In&nbsp;[57]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[58]:
+In&nbsp;[7]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415</span>
+<span class="s">&quot;an integer </span><span class="si">%d</span><span class="s">, a float </span><span class="si">%f</span><span class="s">, and a string </span><span class="si">%s</span><span class="s">&quot;</span>  <span class="o">%</span>  <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="s">&quot;moo&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[7]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+&apos;and integer 42, a float 3.141500, and a string moo&apos;
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[8]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="s">&quot;formated float </span><span class="si">%.2f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">pi</span>
@@ -3310,7 +3362,7 @@ In&nbsp;[58]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[58]:</div>
+    Out[8]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -3573,17 +3625,17 @@ In&nbsp;[65]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Assignment statements are used to (re)bind names to values and to modify attributes or items of mutable objects.</p>
-<p>In short, it works as follows (simple assignment):</p>
+<p>פעולות השמה משמשות להצבת שמות לערכים, ועל מנת לשנות את ההפרטים באובייקטים שניתנים לשנות אותם (כמו רשימות, להבדיל מו-tuples)</p>
+<p>בקצרה, השמה מתבצעת כדלהלן :</p>
 <ol style="list-style-type: decimal">
-<li>an expression on the right hand side is evaluated, the corresponding object is created/obtained</li>
-<li>a name on the left hand side is assigned, or bound, to the r.h.s. object</li>
+<li>הביטוי מצד ימין מוערך, ונוצר האוביקט המתאים.</li>
+<li>האוביקט שנוצר מוצב עבור הערך בצד ימין.</li>
 </ol>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[66]:
+In&nbsp;[9]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
@@ -3599,7 +3651,7 @@ In&nbsp;[66]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[66]:</div>
+    Out[9]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -3617,7 +3669,7 @@ In&nbsp;[66]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[67]:
+In&nbsp;[10]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">b</span>
@@ -3631,7 +3683,7 @@ In&nbsp;[67]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[67]:</div>
+    Out[10]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -3710,6 +3762,36 @@ In&nbsp;[69]:
 </div>
 </div>
 
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="תרגילון">תרגילון</h1>
+<p>לביצוע במפענח.</p>
+<ol style="list-style-type: decimal">
+<li>צרו מחרוזת בשם myString עם הערך Hello, &quot;world&quot; בתוכה. שימו לב לא להסתבך עם המרכאות.</li>
+</ol>
+<ul>
+<li>הדפיסו את התו השני עד הרביעי של המחרוז.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>צרו משתנה שלם (integer) בשם myInt עם הערך 6.</li>
+<li>צרו משתנה בשם divided והציבו בו את ערכו של myInt מחולק ב-4</li>
+</ol>
+<ul>
+<li>האם הערך של divided הוא מספר שלם? האם הוא התוצאה הנכונה?</li>
+<li>במשתנה divided_f הציבו את את ערכו של myInt מחולק ב-4.0. מה טיפוס המשתנים של divide_f?</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>צרו רשימה ריקה בשם myList.</li>
+</ol>
+<ul>
+<li>הוסיפו לרשימה בזה אחר זה את ארבעת המשתנים שיצרתם לעיל, לפי סדר היצירה.</li>
+<li>סדרו את הרשימה</li>
+<li>הדפיסו את האיבר השלישי</li>
+<li>בדקו האם המספר 1 נמצא ברשימה. והמספר 1.5?</li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>הפכו את המחרוזת שיצרתם בסעיף 1 לרשימה, שכל אחד מהערכים בה הוא אחת המילים שבמחרוזת.</li>
+</ol>
 </div>
 </body>
 </html>

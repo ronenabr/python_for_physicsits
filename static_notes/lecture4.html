@@ -1458,8 +1458,7 @@ input.engine_num_input{height:20px;margin-bottom:2px;padding-top:0;padding-botto
 .ansibgpurple{background-color:magenta;}
 .ansibgcyan{background-color:cyan;}
 .ansibggray{background-color:gray;}
-.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;}.cell.selected{border-radius:4px;border:thin #ababab solid;}
-div.cell{width:100%;padding:5px 5px 5px 0px;margin:2px 0px 2px 7px;outline:none;}
+div.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;padding:5px 5px 5px 0px;margin:2px 0px 2px 7px;outline:none;}div.cell.selected{border-radius:4px;border:thin #ababab solid;}
 div.prompt{width:11ex;padding:0.4em;margin:0px;font-family:monospace;text-align:right;line-height:1.231em;}
 .celltoolbar{border:thin solid #CFCFCF;border-bottom:none;background:#EEE;border-top-right-radius:3px;border-top-left-radius:3px;width:100%;-webkit-box-pack:end;height:22px;}
 .no_input_radius{border-top-right-radius:0px;border-top-left-radius:0px;}
@@ -1744,7 +1743,7 @@ In&nbsp;[1]:
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
     <span class="k">print</span> <span class="s">&quot;in test function&quot;</span>
 
-<span class="n">test</span><span class="p">()</span>
+<span class="n">test</span><span class="p">()</span>  
 </pre></div>
 
 </div>
@@ -2226,6 +2225,20 @@ x is now 10, for real
 <li>העברת מספר לא ידוע של פרמטרים לפונקציה: *args, **kwargs</li>
 <li>שימוש בפונקציות בתור &quot;משתנה&quot;</li>
 </ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="תרגילון">תרגילון</h1>
+<p>ניתן לבצע את התרגילים הן במפענח והן בקובץ נפרד</p>
+<ol style="list-style-type: decimal">
+<li>קבעו משתנים גלובאליים המאכסנים את המהירות ההתחלתית והתאוצה. כתבו פונקציה המקבלת מיקום התחלתי וזמן ומחזירה את מיקומו של החלקיק.</li>
+<li>כתבו פונקציה המשנה את המשתנה ה&quot;שמור&quot; המכיל את התאוצה, ופונקציה אחרת המשנה את המהירות ההתחלתית השמורה.</li>
+<li>כתבו פונקציה המקבלת:</li>
+</ol>
+<ul>
+<li>זמן</li>
+<li>רשימה המכילה את הכוח הפועל על גוף בכל שניה (בתא הראשון הכוח במהלך השניה הראשונה, בתא השני בשניה השניה וכן הלאה) הפונקציה משתמשת בערך המסה השמור במשתנה גלובאלי, ומחשבת את מיקומו של החלקיק בזמן המועבר.</li>
+</ul>
+<p>ניתן לכתוב פונקציות עזר. מומלץ להשתמש בלולאה.</p>
 </div>
 </body>
 </html>

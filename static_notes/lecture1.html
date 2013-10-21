@@ -1458,8 +1458,7 @@ input.engine_num_input{height:20px;margin-bottom:2px;padding-top:0;padding-botto
 .ansibgpurple{background-color:magenta;}
 .ansibgcyan{background-color:cyan;}
 .ansibggray{background-color:gray;}
-.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;}.cell.selected{border-radius:4px;border:thin #ababab solid;}
-div.cell{width:100%;padding:5px 5px 5px 0px;margin:2px 0px 2px 7px;outline:none;}
+div.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;padding:5px 5px 5px 0px;margin:2px 0px 2px 7px;outline:none;}div.cell.selected{border-radius:4px;border:thin #ababab solid;}
 div.prompt{width:11ex;padding:0.4em;margin:0px;font-family:monospace;text-align:right;line-height:1.231em;}
 .celltoolbar{border:thin solid #CFCFCF;border-bottom:none;background:#EEE;border-top-right-radius:3px;border-top-left-radius:3px;width:100%;-webkit-box-pack:end;height:22px;}
 .no_input_radius{border-top-right-radius:0px;border-top-left-radius:0px;}
@@ -1766,6 +1765,33 @@ init_mathjax();
 </ul>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="פייתון-בהשוואה-לכלים-אחרים">פייתון, בהשוואה לכלים אחרים</h2>
+<p>אז, אתם צריכים לעשות משהו שאולי עדיף לעשות על ידי מחשב: לכתוב סימולציה, לעבד תוצאות ניסוי, או לצייר פונקציה. בשביל אילו מהדברים האלו עדיף להשתמש בפייתון, ומתי כדאי להשתמש בסביבות עבודה / שפות אחרות.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="מערכות-אלגברה-ממוחשבות-computer-algebra-system-cas">מערכות אלגברה ממוחשבות (&quot;Computer Algebra system&quot;, CAS)</h3>
+<p>כמו &quot;מתמטיקה&quot; או &quot;מייפל&quot;.</p>
+<p>מוצלחות במיוחד למניפולציות סימבוליות על ביטויים מתמטיים, ולרוב גם לא רעות בויזואלזיציה (&quot;ציור&quot; של פונקציות מורכבות). לרוב מסובכות ומעצבנות למדי כשפונים ל&quot;תכנות&quot; אמיתי.</p>
+<p>למרות שלפייתון יש יכולות לא מועטות של CAS (ואף מערכת CAS מלאה הכתובה בפייתון בשם Sage), אנחנו לא נדבר יכולות של CAS בסדנה זו.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="שפות-תכנות-אמיתיות">שפות תכנות &quot;אמיתיות&quot;</h2>
+<p>כמו C, C++ או פורטרן</p>
+<p>הייתרון העיקרי שלהן הן שהן מהירות למדי (זמן ההרצה שלהן, אם התוכנה כתובה היטב, קצר בהרבה בהרבה מקרים בתוכניות שכתובות ב&quot;סוגים&quot; אחרים של שפות).<br />כמו כן, יש המון ספריות וכלים שעוזרים לעשות מדע .</p>
+<p>הבעיה היא שזמן הפיתוח בשפות אלו ארוך בהרבה מאשר בקטגוריות האחרון, קשה יותר להמנע מבעיות חמורות בכתיבת הקוד והן קשות יותר ללמידה.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="מטלב">מטלב</h2>
+<p>שפה אינטראקטיבית פשוטה ללמידה ולשימוש עם המון כלים (toolbox) נוחים לשימוש למדענים ומהנדסים. ספריות מתמטיות מהירות למדי. היא נפוצה למדי ועם בסיס ידע רחב.</p>
+<p>מצד שני, היא <a href="http://abandonmatlab.wordpress.com/">לא כל כך מוצלחת</a> בתור שפה לשימוש כללי. ולמי מכם שזה מטריד אותו, מטלב עצמה, וחלק ניכר מהכלים שבאים איתה, יקרים למדי.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="פייתון">פייתון</h2>
+<p>בראש ובראשונה - שפת סקריפט לשימוש כללי. קלה לשימוש ולמידה , ועם מפענח אינטראקטיבי. בנוסף לכך, לפייתון יש המום כלים וספריות (&quot;תוספות לשפה&quot;) שמקלות מאוד על פיתוח לצרכים מדעיים. הן ספריות כלליות לאלגברה לינארית, חישובים סטטיסטיים, עיבוד נתונים, ויזאוליזציה וכיו&quot;ב, והן כלים ספציפיים לתחומים צרים (astropy, pyroot, pyalps לאסטרופיזיקה, חלקיקים ומצב מוצק, לדוגמה) .</p>
+<p>חוץ מזה, פייתון היא שפה חופשית, וכך גם חלק ניכר מהספריות והכלים הנוספים הקשורים אליה. היא מכילה אינספור ספריות וכלים. בפרט, היא שפה לא רעה גם עבור פרויקטים גדולים מאוד.</p>
+<p>למרות זאת, בתחומים שונים, לסביבות אחרות יש כלים מקיפים יותר. לפעמים, זו סיבה מספיקה.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="סביבת-העבודה">סביבת העבודה</h1>
 <ul>
 <li>בחלונות, <a href="http://code.google.com/p/winpython/">winpython</a> כוללת את כל הכלים שנזדקק להם בסדנא זו. (לא להתבלבל עם PythonWin), וכוללת התקנה פורטובילית</li>
@@ -1810,7 +1836,7 @@ In&nbsp;[]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[1]:
+In&nbsp;[4]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre> <span class="k">print</span> <span class="s">&quot;hello, world&quot;</span>
@@ -1873,7 +1899,7 @@ int
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[6]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">print</span> <span class="n">b</span>
@@ -1882,11 +1908,27 @@ In&nbsp;[]:
 </div>
 </div>
 
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+6
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[6]:
+In&nbsp;[7]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">a</span><span class="o">*</span><span class="n">b</span>
@@ -1900,7 +1942,7 @@ In&nbsp;[6]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[6]:</div>
+    Out[7]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -1918,24 +1960,10 @@ In&nbsp;[6]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[8]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">print</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[9]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="s">&#39;hello&#39;</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1945,15 +1973,12 @@ In&nbsp;[9]:
 <div class="output vbox">
 
 
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[9]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-int
-</pre>
+18
 
+</pre>
 </div>
 </div>
 
@@ -1964,7 +1989,7 @@ int
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[8]:
+In&nbsp;[9]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">b</span> <span class="o">+</span> <span class="n">b</span>
@@ -1978,7 +2003,7 @@ In&nbsp;[8]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[8]:</div>
+    Out[9]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -1996,7 +2021,7 @@ In&nbsp;[8]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[7]:
+In&nbsp;[10]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">b</span><span class="o">*</span><span class="n">b</span>
@@ -2010,7 +2035,7 @@ In&nbsp;[7]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[7]:</div>
+    Out[10]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -2025,10 +2050,50 @@ In&nbsp;[7]:
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[11]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="s">&#39;hello&#39;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[11]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+str
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>כדי להריץ תוכנית שלמה באמצעות המפענח:</p>
 <pre><code>python code.py (linux)
 pythonw code.py  (windows)</code></pre>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="תרגילון">תרגילון</h1>
+<ol style="list-style-type: decimal">
+<li>פתחו את המפענח וכתבו תוכנית שמדפיסה &quot;Hello, world&quot;</li>
+<li>כתבו קובץ טקסט עם סיומת .py שמכיל קוד להדפסת &quot;Hello, world&quot;. הריצו אותו באמצעות המפענח.</li>
+</ol>
 </div>
 </body>
 </html>
